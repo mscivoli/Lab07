@@ -1,6 +1,7 @@
 package it.polito.tdp.poweroutages.model;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
@@ -85,7 +86,9 @@ public class Model {
 	
 		
 		if(parziale.size()==0) {
-			dataMassima = e.inizio.plusYears(maxAnni-1);
+			int Anno = e.inizio.getYear();
+			LocalDateTime anniFinale = LocalDateTime.of(Anno, Month.DECEMBER, 31, 0, 0, 0);
+			dataMassima = anniFinale.plusYears(maxAnni-1);
 			this.minuti = 0;
 			return true;
 		}
